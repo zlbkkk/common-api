@@ -7,6 +7,8 @@ public class UserDTO {
     private Long id;
     private String username;
     private String email;
+    private String phoneNumber;  // 新增：手机号码
+    private Integer status;      // 新增：用户状态 (0-禁用, 1-启用)
 
     public UserDTO() {
     }
@@ -15,6 +17,15 @@ public class UserDTO {
         this.id = id;
         this.username = username;
         this.email = email;
+    }
+
+    // 新增：带所有字段的构造函数
+    public UserDTO(Long id, String username, String email, String phoneNumber, Integer status) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.status = status;
     }
 
     public Long getId() {
@@ -39,5 +50,21 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
