@@ -1,14 +1,19 @@
 package com.example.common.dto;
 
+import java.util.Date;
+
 /**
  * 用户数据传输对象
+ * 用于跨项目共享用户数据
  */
 public class UserDTO {
     private Long id;
     private String username;
     private String email;
-    private String phoneNumber;  // 新增：手机号码
-    private Integer status;      // 新增：用户状态 (0-禁用, 1-启用)
+    private String phone;
+    private Integer status; // 0-禁用, 1-正常
+    private Date createTime;
+    private Date lastLoginTime;
 
     public UserDTO() {
     }
@@ -17,17 +22,20 @@ public class UserDTO {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.status = 1;
+        this.createTime = new Date();
     }
 
-    // 新增：带所有字段的构造函数
-    public UserDTO(Long id, String username, String email, String phoneNumber, Integer status) {
+    public UserDTO(Long id, String username, String email, String phone, Integer status) {
         this.id = id;
         this.username = username;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
         this.status = status;
+        this.createTime = new Date();
     }
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -52,12 +60,12 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Integer getStatus() {
@@ -66,5 +74,21 @@ public class UserDTO {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 }
