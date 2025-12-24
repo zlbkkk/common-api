@@ -6,6 +6,7 @@ import java.util.Date;
 /**
  * 订单数据传输对象
  * 用于跨项目共享订单数据
+ * 场景2测试：DTO字段修改
  */
 public class OrderDTO {
     private Long orderId;
@@ -15,6 +16,17 @@ public class OrderDTO {
     private Integer status; // 0-待支付, 1-已支付, 2-已取消
     private Date createTime;
     private String productName;
+    
+    // 场景2测试：新增字段（向后兼容）
+    private String deliveryAddress;
+    private String contactPhone;
+    private Integer paymentMethod; // 1-支付宝, 2-微信, 3-银行卡
+    
+    // 场景2测试：修改字段类型（原来可能是 Double，现在统一用 BigDecimal）
+    private BigDecimal discountAmount;
+    
+    // 场景2测试：删除字段 - 移除了 description 字段（如果之前存在）
+    // private String description; // 已删除
 
     public OrderDTO() {
     }
@@ -26,6 +38,7 @@ public class OrderDTO {
         this.totalAmount = totalAmount;
         this.status = 0;
         this.createTime = new Date();
+        this.discountAmount = BigDecimal.ZERO;
     }
 
     // Getters and Setters
@@ -83,5 +96,38 @@ public class OrderDTO {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+    
+    // 场景2测试：新增字段的 Getter/Setter
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+    
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+    
+    public String getContactPhone() {
+        return contactPhone;
+    }
+    
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+    
+    public Integer getPaymentMethod() {
+        return paymentMethod;
+    }
+    
+    public void setPaymentMethod(Integer paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+    
+    public BigDecimal getDiscountAmount() {
+        return discountAmount;
+    }
+    
+    public void setDiscountAmount(BigDecimal discountAmount) {
+        this.discountAmount = discountAmount;
     }
 }
