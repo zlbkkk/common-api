@@ -39,4 +39,10 @@ public interface OrderService {
      * 用于 Dubbo RPC 调用测试
      */
     String getOrderStatusText(Long orderId);
+    
+    /**
+     * 获取订单详细信息（包含状态文本）
+     * 用于测试完整的 HTTP → Dubbo 调用链
+     */
+    String getOrderDetails(Long orderId);
 }
