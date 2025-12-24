@@ -33,4 +33,10 @@ public interface OrderService {
      * 取消订单
      */
     boolean cancelOrder(Long orderId);
+    
+    /**
+     * 获取订单状态文本描述
+     * 用于 Dubbo RPC 调用测试
+     */
+    String getOrderStatusText(Long orderId);
 }
