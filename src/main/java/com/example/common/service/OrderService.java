@@ -45,4 +45,13 @@ public interface OrderService {
      * 用于测试完整的 HTTP → Dubbo 调用链
      */
     String getOrderDetails(Long orderId);
+    
+    /**
+     * 获取订单摘要信息（用于测试 Dubbo RPC 调用）
+     * 这个方法会被 service-b 通过 Dubbo RPC 调用
+     * 
+     * @param orderId 订单ID
+     * @return 订单摘要信息，格式：订单号-金额-状态
+     */
+    String getOrderSummary(Long orderId);
 }
