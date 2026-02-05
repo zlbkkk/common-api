@@ -54,4 +54,17 @@ public interface OrderService {
      * @return 订单摘要信息，格式：订单号-金额-状态
      */
     String getOrderSummary(Long orderId);
+    
+    /**
+     * 【新增 Dubbo 方法】获取订单状态变更历史
+     * 
+     * 场景说明：
+     * - 用于模拟 beehive-order-finance 中“FinanceProvider 新增方法”的真实场景
+     * - 由 service-a 作为 Dubbo Provider 实现该方法
+     * - 目前 service-b 暂不调用，模拟“先扩展接口和提供者，消费方后续再接入”的情况
+     *
+     * @param orderId 订单ID
+     * @return 订单状态变更历史的文本描述
+     */
+    String getOrderStatusHistory(Long orderId);
 }
